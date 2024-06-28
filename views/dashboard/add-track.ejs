@@ -1,0 +1,173 @@
+<%- include("../includes/user-header", {user:userInfo}); -%>
+<script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
+         <!-- TOP Nav Bar END -->
+         <!-- Page Content  -->
+         <div id="content-page" class="content-page">
+            <div class="container-fluid">
+               <div class="row">
+                  <div class="col-sm-12 col-lg-12">
+                     <div class="iq-card">
+                        <div class="iq-card-header d-flex justify-content-between">
+                           <div class="iq-header-title">
+                              <h4 class="card-title">Add New Track</h4>
+                           </div>
+                        </div>
+                        <div class="iq-card-body">
+                           <form id="form-wizard1" class="text-center mt-4" method="post" action="/upload" enctype="multipart/form-data">
+                              <ul id="top-tab-list" class="p-0">
+                                 <li class="active" id="account">
+                                    <a href="javascript:void();">
+                                    <i class="ri-file-chart-line"></i><span>Track Info.</span>
+                                    </a>
+                                 </li>
+                                 <li id="personal">
+                                    <a href="javascript:void();">
+                                    <i class="ri-camera-fill"></i><span>Album Art</span>
+                                    </a>
+                                 </li>
+                                 <li id="payment">
+                                    <a href="javascript:void();">
+                                    <i class="ri-record-circle-line"></i><span>Track</span>
+                                    </a>
+                                 </li>
+                                 <li id="confirm">
+                                    <a href="javascript:void();">
+                                    <i class="ri-database-line"></i><span>Upload</span>
+                                    </a>
+                                 </li>
+                              </ul>
+                              <!-- fieldsets -->
+                              <fieldset>
+                                 <div class="form-card text-left">
+                                    <div class="row">
+                                       <div class="col-7">
+                                          <h3 class="mb-4">Track Information:</h3>
+                                       </div>
+                                       <div class="col-5">
+                                          <h2 class="steps">Step 1 - 4</h2>
+                                       </div>
+                                    </div>
+                                    <div class="row">
+                                       <div class="col-md-6">
+                                          <div class="form-group">
+                                             <label>Track Title: *</label>
+                                             <input type="text" class="form-control" name="tracktitle" placeholder="Track Title"  />
+                                          </div>
+                                       </div>
+                                       <div class="col-md-6">
+                                          <div class="form-group">
+                                             <label>Features: *</label>
+                                             <input type="text" class="form-control" name="feat" placeholder="Feat" />
+                                          </div>
+                                       </div>
+                                       <div class="col-md-6">
+                                          <div class="form-group">
+                                             <label>Sound Engineer: *</label>
+                                             <input type="text" class="form-control" name="soundE" placeholder="Dj " />
+                                          </div>
+                                       </div>
+                                       <div class="col-md-6">
+                                          <div class="form-group">
+                                             <label>Year Produced: *</label>
+                                             <input type="text" class="form-control" name="year" placeholder="E.g: 2024" />
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <button type="button" name="next" class="btn btn-primary next action-button float-right" value="Next" >Next</button>
+                              </fieldset>
+                              <fieldset>
+                                 <input type="hidden" name="id" value="<%= userInfo.id%>" id="">
+                                 <div class="form-card text-left">
+                                    <div class="row">
+                                       <div class="col-7">
+                                          <h3 class="mb-4">Album Art:</h3>
+                                       </div>
+                                       <div class="col-5">
+                                          <h2 class="steps">Step 2 - 4</h2>
+                                       </div>
+                                    </div>
+                                    <div class="row">
+                                       <div class="col-md-10" style="margin-bottom: 10px;">
+                                          <div class="form-group">
+                                             <label>Upload Album Art: <em style="font-weight: 300; font-size: smaller;">Max file size-1MB</em>*</label>
+                                             <!-- <input style="height: 50px;" type="file" class="form-control" name="albumart" accept="image/*"  /> -->
+                                             <input type="file" class=" form-control" id="customFile" name="albumart" accept="image/*">
+                                          </div>
+                                       </div>
+                                       <!-- <div class="col-md-6">
+                                          <div class="form-group">
+                                             <label>Last Name: *</label>
+                                             <input type="text" class="form-control" name="lname" placeholder="Last Name" />
+                                          </div>
+                                       </div>
+                                       <div class="col-md-6">
+                                          <div class="form-group">
+                                             <label>Contact No.: *</label>
+                                             <input type="text" class="form-control" name="phno" placeholder="Contact No." />
+                                          </div>
+                                       </div>
+                                       <div class="col-md-6">
+                                          <div class="form-group">
+                                             <label>Alternate Contact No.: *</label>
+                                             <input type="text" class="form-control" name="phno_2" placeholder="Alternate Contact No." />
+                                          </div>
+                                       </div> -->
+                                    </div>
+                                 </div>
+                                 <button type="button" name="next" class="btn btn-primary next action-button float-right" value="Next" >Next</button>
+                                 <button type="button" name="previous" class="btn btn-dark previous action-button-previous float-right mr-3" value="Previous" >Previous</button>
+                              </fieldset>
+                              <fieldset>
+                                 <div class="form-card text-left">
+                                    <div class="row">
+                                       <div class="col-7">
+                                          <h3 class="mb-4">Track Upload:</h3>
+                                       </div>
+                                       <div class="col-5">
+                                          <h2 class="steps">Step 3 - 4</h2>
+                                       </div>
+                                    </div>
+                                    <div class="form-group">
+                                       <label>Upload mp3 Track: <em style="font-weight: 300; font-size: smaller;">Max file size-3MB</em></label>
+                                       <!-- <input style="height: 50px;" type="file" class="form-control" name="track"  > -->
+                                       <input type="file" class=" form-control" id="customFile" name="track" accept="audio/*">
+                                    </div>
+                                    
+                                 </div>
+                                 <a  class="btn btn-primary next action-button float-right" href="#" onclick="document.getElementById('form-wizard1').submit();">
+                                    <button type="submit" name="next" class="btn btn-primary next action-button float-right" value="Submit" >Submit</button>
+                                 </a>
+                                 <button type="button" name="previous" class="btn btn-dark previous action-button-previous float-right mr-3" value="Previous" >Previous</button>
+                              </fieldset>
+                              <fieldset>
+                                 <div class="form-card">
+                                    
+                                    
+                                    
+                                    <div class="row justify-content-center" style="margin-top: -50px;">
+                                       <!-- <div class="col-3"> <img src="images/page-img/img-success.png" class="fit-image" alt="fit-image"> </div> -->
+                                       <dotlottie-player src="https://lottie.host/0bb089d8-8f51-4f23-a5b0-db5f693b3b12/8BD0b6Nofv.json" background="transparent" speed="1" style="width: 200px; height: 200px;" loop autoplay></dotlottie-player>
+                                       
+                                    </div>
+                                    <h5 class="purple-text text-center" style="color: rgb(31, 162, 96);">Your Track is been Uploaded...</h5>
+                                    <p class="text-center" style="font-style: italic; font-weight: 300;">Please wait...</p>
+                                    <br><br>
+                                    <div class="row justify-content-center">
+                                       <div class="col-7 text-center">
+                                          <!-- <h5 class="purple-text text-center">You Have Successfully Signed Up</h5> -->
+                                       </div>
+                                    </div>
+                                 </div>
+                              </fieldset>
+                           </form>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- Wrapper END -->
+      <!-- Footer -->
+      <%- include("../includes/user-footer"); -%>
